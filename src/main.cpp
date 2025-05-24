@@ -8,7 +8,7 @@
 #define NUM_LEDS 200
 #define NUM_ANTENNAE 4
 #define ONE_MIN_IN_MILLIS 60000
-#define CHOICES 4
+#define CHOICES 5
 #define PATTERN_CYCLE_TIME (ONE_MIN_IN_MILLIS * 1)
 
 CRGB strip_6[NUM_LEDS];
@@ -53,21 +53,24 @@ void loop() {
     current_choice = (current_choice + 1) % CHOICES;
     last_millis = now;
     if (0 == current_choice) {
+      current_loop = all_antennae_pong_fast_color;
+    }
+    if (1 == current_choice) {
       color_palette_palette = RainbowColors_p;
       color_palette_blending = LINEARBLEND;
       current_loop = color_palette_loop;
     }
-    if (1 == current_choice) {
-      color_palette_palette = RainbowStripeColors_p;
-      color_palette_blending = NOBLEND;
-      current_loop = color_palette_loop;
-    }
     if (2 == current_choice) {
-      color_palette_palette = PartyColors_p;
-      color_palette_blending = NOBLEND;
+      color_palette_palette = RainbowStripeColors_p;
+      color_palette_blending = LINEARBLEND;
       current_loop = color_palette_loop;
     }
     if (3 == current_choice) {
+      color_palette_palette = PartyColors_p;
+      color_palette_blending = LINEARBLEND;
+      current_loop = color_palette_loop;
+    }
+    if (4 == current_choice) {
       current_loop = rainbow_cylon_loop;
     }
   }
