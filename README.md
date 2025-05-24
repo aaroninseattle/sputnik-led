@@ -1,5 +1,6 @@
 # `sputnik-led`
-Assumes macOS development environment.
+- Assumes macOS development environment.
+- Assumes Arduino Mega 2560 (ATmega2560)
 
 Install `pyenv`:
 ```
